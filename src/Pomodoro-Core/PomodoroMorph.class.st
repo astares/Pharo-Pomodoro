@@ -11,7 +11,8 @@ Class {
 		'progressBar',
 		'pauseButton',
 		'isMinimized',
-		'isActive'
+		'isActive',
+		'startButton'
 	],
 	#classInstVars : [
 		'menuIcon'
@@ -126,7 +127,7 @@ PomodoroMorph >> displayClock [
 
 { #category : #'private - initialization' }
 PomodoroMorph >> initButtons [
-	|startButton stopButton   |
+	| stopButton |
 	startButton  := PluggableButtonMorph
 					on: self
 					getState: #startButtonEnabled
@@ -341,6 +342,7 @@ PomodoroMorph >> openSettings [
 
 { #category : #actions }
 PomodoroMorph >> pause [
+	self model isReady ifTrue: [ ^self ].
 	self model isPaused 
 		ifTrue: [ 
 			self color: self standardColor.
@@ -386,7 +388,6 @@ PomodoroMorph >> standardColor [
 { #category : #actions }
 PomodoroMorph >> start [
 	super start.
-	self model isActive ifTrue: [ ^self ].			 
  	self reset.
 	self color: self standardColor.
 	self model start.
@@ -521,6 +522,12 @@ PomodoroMorph >> taskbarTask [
 
 { #category : #'private - updating' }
 PomodoroMorph >> updateButtons [
+	startButton ifNotNil: [:button |
+		button 
+			label:
+				(self model isReady
+					ifTrue: [ 'Start' ]
+					ifFalse: [ 'Restart' ])].
 
 	pauseButton ifNotNil: [:button |
 		button 
