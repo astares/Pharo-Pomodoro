@@ -221,7 +221,7 @@ PomodoroMorph >> initialClockTextMorph [
 	^(TextMorph new) 
 		contents: '00:00'; 
 		font: (LogicalFont familyName: 'Source Sans Pro' pointSize: 20);
-		lock;
+		toggleLocked;
 		yourself
 ]
 
