@@ -111,6 +111,12 @@ Pomodoro >> alreadyElapsed: aDuration [
 	
 ]
 
+{ #category : #'private - initialization' }
+Pomodoro >> createStopWatch [
+
+	^Stopwatch new
+]
+
 { #category : #defaults }
 Pomodoro >> defaultFinishedAction [
 	"Returns a default action to be performed when finished"
@@ -153,7 +159,7 @@ Pomodoro >> finishedAction: aBlock [
 	finishedAction := aBlock
 ]
 
-{ #category : #'private-printing' }
+{ #category : #'private - formatting' }
 Pomodoro >> formatDuration: aDuration [
 
 	| h m s |
@@ -270,13 +276,13 @@ Pomodoro >> start [
 	self stopWatch activate.
 ]
 
-{ #category : #'private-accessing' }
+{ #category : #'private - accessing' }
 Pomodoro >> state [
 
 	^state
 ]
 
-{ #category : #'private-accessing' }
+{ #category : #'private - accessing' }
 Pomodoro >> state: aSymbol [
 	state := aSymbol
 ]
@@ -284,7 +290,7 @@ Pomodoro >> state: aSymbol [
 { #category : #accessing }
 Pomodoro >> stopWatch [
 	
-	stopWatch ifNil: [ stopWatch := Stopwatch new ].
+	stopWatch ifNil: [ stopWatch := self createStopWatch ].
 	^stopWatch
 ]
 
@@ -295,7 +301,7 @@ Pomodoro >> totalDuration [
 	^totalDuration
 ]
 
-{ #category : #'private-accessing' }
+{ #category : #'private - accessing' }
 Pomodoro >> totalDuration: aDuration [
 	"Sets the total duration of the receiver"
 
