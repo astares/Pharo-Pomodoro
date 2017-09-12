@@ -492,7 +492,7 @@ PomodoroMorph >> taskbarIcon [
 
 { #category : #taskbar }
 PomodoroMorph >> taskbarLabel [
-	^pomodoro formatDuration: pomodoro remainingDuration 
+	^Pomodoro formatDuration: pomodoro remainingDuration 
 ]
 
 { #category : #taskbar }

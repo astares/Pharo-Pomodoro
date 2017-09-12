@@ -27,7 +27,7 @@ Pomodoro class >> example1 [
 	self example1
 	"
 	
-	Pomodoro new open
+	self new open
 ]
 
 { #category : #examples }
@@ -36,7 +36,7 @@ Pomodoro class >> example2 [
 	self example2
 	"
 		
-	(Pomodoro totalDuration: 1 minute) open
+	(self totalDuration: 1 minute) open
 ]
 
 { #category : #examples }
@@ -45,7 +45,7 @@ Pomodoro class >> example3 [
 	self example3 
 	"
 		
-	(Pomodoro totalDuration: 3 seconds)
+	(self totalDuration: 3 seconds)
 		finishedAction: [ Nautilus open ];
 		open
 ]
@@ -56,7 +56,7 @@ Pomodoro class >> example4 [
 	self example4 
 	"
 		
-	Pomodoro timerFor: 10 seconds
+	self timerFor: 10 seconds
 ]
 
 { #category : #examples }
@@ -65,8 +65,27 @@ Pomodoro class >> example5 [
 	self example5 
 	"
 		
-	Pomodoro timerFor: 5 seconds 
+	self timerFor: 5 seconds 
 			     whenFinishedDo: [ self inform: 'Pomodoro finished']
+]
+
+{ #category : #'private - formatting' }
+Pomodoro class >> formatDuration: aDuration [
+
+	| h m s |
+	h := aDuration hours abs.
+	m := aDuration minutes abs.
+ 	s := aDuration seconds abs truncated.
+	^String streamContents: [:aStream | 
+		"Print hours only if there are hours"
+		h > 0 ifTrue: [ 
+			h < 10 ifTrue: [ aStream nextPut: $0. ].
+			h printOn: aStream. aStream nextPut: $: ].
+		
+		m < 10 ifTrue: [ aStream nextPut: $0. ].
+		m printOn: aStream. aStream nextPut: $:.
+		s < 10 ifTrue: [ aStream nextPut: $0. ].
+		s printOn: aStream ]
 ]
 
 { #category : #'instance creation' }
@@ -134,14 +153,11 @@ Pomodoro >> defaultTotalDuration [
 
 { #category : #running }
 Pomodoro >> finish [
-	"Finish the receiver"
- 
-	self isFinished ifFalse: [ 
-		self remainingDuration: 0 seconds.
-		finishedAction value.
-		self state: #finished
-	]
-	
+	self isFinished
+		ifTrue: [ ^ self ].
+	self remainingDuration: 0 seconds.
+	finishedAction value.
+	self state: #finished
 ]
 
 { #category : #accessing }
@@ -159,26 +175,7 @@ Pomodoro >> finishedAction: aBlock [
 	finishedAction := aBlock
 ]
 
-{ #category : #'private - formatting' }
-Pomodoro >> formatDuration: aDuration [
-
-	| h m s |
-	h := aDuration hours abs.
-	m := aDuration minutes abs.
- 	s := aDuration seconds abs truncated.
-	^String streamContents: [:aStream | 
-		"Print hours only if there are hours"
-		h > 0 ifTrue: [ 
-			h < 10 ifTrue: [ aStream nextPut: $0. ].
-			h printOn: aStream. aStream nextPut: $: ].
-		
-		m < 10 ifTrue: [ aStream nextPut: $0. ].
-		m printOn: aStream. aStream nextPut: $:.
-		s < 10 ifTrue: [ aStream nextPut: $0. ].
-		s printOn: aStream ]
-]
-
-{ #category : #'initialize-release' }
+{ #category : #initialization }
 Pomodoro >> initialize [
 	"Initializes the receiver"
 	
@@ -235,7 +232,7 @@ Pomodoro >> pause [
 Pomodoro >> printOn: aStream [
 
 	aStream 
-		nextPutAll: (self formatDuration: self totalDuration);
+		nextPutAll: (self class formatDuration: self totalDuration);
 		nextPutAll: ' interval pomodoro with ';
 		nextPutAll: self remainingDurationString;
 		nextPutAll: ' remaining'
@@ -258,7 +255,7 @@ Pomodoro >> remainingDuration: aDuration [
 { #category : #accessing }
 Pomodoro >> remainingDurationString [
 
-	^self formatDuration: self remainingDuration
+	^self class formatDuration: self remainingDuration
 ]
 
 { #category : #running }
