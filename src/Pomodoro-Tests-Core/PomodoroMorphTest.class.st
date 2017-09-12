@@ -1,3 +1,6 @@
+"
+Test cases for Pomodoro morph
+"
 Class {
 	#name : #PomodoroMorphTest,
 	#superclass : #TestCase,
