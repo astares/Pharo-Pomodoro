@@ -23,7 +23,7 @@ Class {
 { #category : #private }
 PomodoroMorph class >> createMenuIcon [ 
 
-	^Form fromBinaryStream: self menuIconContent base64Encoded readStream
+	^Form fromBinaryStream: self menuIconContent base64Decoded readStream
 ]
 
 { #category : #'world menu' }
