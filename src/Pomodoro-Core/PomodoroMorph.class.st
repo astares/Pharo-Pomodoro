@@ -23,7 +23,7 @@ Class {
 { #category : #private }
 PomodoroMorph class >> createMenuIcon [ 
 
-	^Form fromBinaryStream: (Base64MimeConverter mimeDecodeToBytes: self menuIconContent readStream)
+	^Form fromBinaryStream: self menuIconContent base64Encoded readStream
 ]
 
 { #category : #'world menu' }
@@ -94,6 +94,8 @@ PomodoroMorph >> buildWindowMenu [
 	aMenu := UIManager default
 					newMenuIn: self for: self.
 	aMenu add: 'Open settings...' selector: #openSettings.	 
+	aMenu add: 'Set time' selector: #setTime.		
+	aMenu add: 'Set action' selector: #setAction.				
 	^aMenu
 ]
 
@@ -378,6 +380,35 @@ PomodoroMorph >> restore [
 		self maximize.  
 		self activate ] 
 	ifFalse: [ self minimize ]
+]
+
+{ #category : #actions }
+PomodoroMorph >> setAction [
+	|action|
+	self stop.
+	action := UIManager default
+					request: 'Enter action expression'
+					initialAnswer: 'WebBrowser openOn: ''http://www.pharo.org'''
+					title: 'Set action'.
+	action ifNil: [ ^self ].		
+	action	 := '[', action, ']'.
+	self model finishedAction: (self class compiler evaluate: action).
+	self changed.
+	
+]
+
+{ #category : #actions }
+PomodoroMorph >> setTime [
+	|time|
+	self stop.
+	time := UIManager default
+					request: 'Enter time'
+					initialAnswer: '5 minutes'
+					title: 'Set time'.
+	time ifNil: [ ^self ].				
+	self model totalDuration: (self class compiler evaluate: time).
+	self changed.
+	
 ]
 
 { #category : #'private - accessing' }
