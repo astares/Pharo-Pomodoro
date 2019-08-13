@@ -3,7 +3,7 @@ A baseline for Astares implementation of Pomodoro timer for Pharo
 "
 Class {
 	#name : #BaselineOfPomodoro,
-	#superclass : #Object,
+	#superclass : #BaselineOf,
 	#category : #BaselineOfPomodoro
 }
 
