@@ -21,7 +21,7 @@ PomodoroMorphTest >> defaultTestClass [
 PomodoroMorphTest >> setUp [	
 	
 	super setUp.
-	morph := self defaultTestClass new. 
+	morph := self defaultTestClass new
 ]
 
 { #category : #testing }

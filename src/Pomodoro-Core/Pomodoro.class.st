@@ -23,47 +23,37 @@ Class {
 
 { #category : #examples }
 Pomodoro class >> example1 [
-	"
-	self example1
-	"
+	<example>
 	
 	self new open
 ]
 
 { #category : #examples }
 Pomodoro class >> example2 [
-	"
-	self example2
-	"
+	<example>
 		
 	(self totalDuration: 1 minute) open
 ]
 
 { #category : #examples }
 Pomodoro class >> example3 [
-	"
-	self example3 
-	"
+	<example>
 		
 	(self totalDuration: 3 seconds)
-		finishedAction: [ Nautilus open ];
+		finishedAction: [ ClyFullBrowser open ];
 		open
 ]
 
 { #category : #examples }
 Pomodoro class >> example4 [
-	"
-	self example4 
-	"
+	<example>
 		
 	self timerFor: 10 seconds
 ]
 
 { #category : #examples }
 Pomodoro class >> example5 [
-	"
-	self example5 
-	"
+	<example>
 		
 	self timerFor: 5 seconds 
 			     whenFinishedDo: [ self inform: 'Pomodoro finished']

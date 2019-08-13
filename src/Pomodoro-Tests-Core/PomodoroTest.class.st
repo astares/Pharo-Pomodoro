@@ -38,7 +38,7 @@ PomodoroTest >> testAlreadyElapsed [
 
 	self assert: pomodoro totalDuration equals: 25 minutes.
 	pomodoro alreadyElapsed: 2 minutes.
-	self assert: pomodoro remainingDuration equals: 23 minutes.
+	self assert: pomodoro remainingDuration equals: 23 minutes
 ]
 
 { #category : #testing }
@@ -46,7 +46,7 @@ PomodoroTest >> testAlreadyElapsedOverLimit [
 
 	self assert: pomodoro totalDuration equals: 25 minutes.
 	pomodoro alreadyElapsed: 30 minutes.
-	self assert: pomodoro remainingDuration equals: 0 minutes.
+	self assert: pomodoro remainingDuration equals: 0 minutes
 ]
 
 { #category : #testing }
@@ -117,7 +117,7 @@ PomodoroTest >> testOpenMorph [
 	|morph|
 	morph := self defaultTestClass new open.
 	self assert: morph visible.	
-	morph delete.
+	morph delete
 	 
 ]
 
@@ -126,7 +126,7 @@ PomodoroTest >> testPrintString [
 
 	self assert: pomodoro printString equals: '25:00 interval pomodoro with 25:00 remaining'.
 	pomodoro totalDurationInMinutes: 10.
-	self assert: pomodoro printString equals: '10:00 interval pomodoro with 10:00 remaining'.
+	self assert: pomodoro printString equals: '10:00 interval pomodoro with 10:00 remaining'
 	
 ]
 
@@ -134,7 +134,7 @@ PomodoroTest >> testPrintString [
 PomodoroTest >> testPrintStringIfMoreThanAnHour [
 
 	pomodoro totalDuration: 63 minutes.
-	self assert: pomodoro printString equals: '01:03:00 interval pomodoro with 01:03:00 remaining'.
+	self assert: pomodoro printString equals: '01:03:00 interval pomodoro with 01:03:00 remaining'
 	
 ]
 
@@ -157,7 +157,7 @@ PomodoroTest >> testReset [
 	self assert: pomodoro totalDuration equals: 25 minutes.
 	pomodoro alreadyElapsed: 2 minutes.
 	pomodoro reset.
-	self assert: pomodoro remainingDuration equals: 25 minutes.
+	self assert: pomodoro remainingDuration equals: 25 minutes
 ]
 
 { #category : #testing }

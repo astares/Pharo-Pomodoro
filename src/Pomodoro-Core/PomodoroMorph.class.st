@@ -74,7 +74,7 @@ SUVORK5CYII='
 
 { #category : #'instance creation' }
 PomodoroMorph class >> on: aPomodoro [
-	"Return a new instance with the given pomodoro as model"
+	"Return a new instance with the given Pomodoro as model"
 
 	^(self new)
 		model: aPomodoro;
