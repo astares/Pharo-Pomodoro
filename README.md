@@ -1,5 +1,5 @@
 # Pharo-Pomodoro
-Pomodoro Timer for Pharo following the [Pomodoro Technique](http://en.wikipedia.org/wiki/Pomodoro_Technique)
+**Pomodoro Timer** for [Pharo](http://www.pharo.org) following the [Pomodoro Technique](http://en.wikipedia.org/wiki/Pomodoro_Technique)
 
 ## About
 The Pomodoro Timer for Pharo was written by T. Bergmann (Astares). The following people additionally contributed code to it:
