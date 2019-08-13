@@ -6,15 +6,6 @@ The Pomodoro Timer for Pharo was written by T. Bergmann (Astares). The following
 - Phillipe Back (compatibility to Dark Theme)
 - StephanEggermont (taskbar integration, cleanups)
 
-## Screenshot
-![alt text](doc/screenshot.png "Screenshot")
-
-## Video
-[![Watch the video](https://img.youtube.com/vi/voSUzOu5feU/hqdefault.jpg)](https://youtu.be/voSUzOu5feU)
-
-## LICENSE
-MIT License
-
 # Quick Start
 ## Installation via Catalog
 
@@ -28,6 +19,15 @@ Metacello new
 	baseline: 'Pomodoro';
 	load
 ```
+
+## Screenshot
+![alt text](doc/screenshot.png "Screenshot")
+
+## Video
+[![Watch the video](https://img.youtube.com/vi/voSUzOu5feU/hqdefault.jpg)](https://youtu.be/voSUzOu5feU)
+
+## LICENSE
+[MIT License](LICENSE)
 
 # Usage
 
