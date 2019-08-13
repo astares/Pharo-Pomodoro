@@ -2,8 +2,9 @@
 **Pomodoro Timer** for [Pharo](http://www.pharo.org) following the [Pomodoro Technique](http://en.wikipedia.org/wiki/Pomodoro_Technique)
 
 ## About
-The Pomodoro Timer for Pharo was written by T. Bergmann (Astares). The following people additionally contributed code to it:
-- Phillipe Back (compatibility to Dark Theme)
+The Pomodoro Timer for Pharo was written by T. Bergmann (Astares). The following people additionally contributed code to this project:
+
+- Phillipe Back (initial experiment [HighOctane-Pomodoro](http://smalltalkhub.com/#!/~philippeback/HOPomodoro), added compatibility to Dark Theme)
 - StephanEggermont (taskbar integration, cleanups)
 
 # Quick Start
@@ -51,6 +52,7 @@ Pomodoro
 ```
 
 # History and Related
+- Initial [HOPomodoro experiment from Phillipe on STHub](http://smalltalkhub.com/#!/~philippeback/HOPomodoro)
 - Original version starting in Pharo 2.0 - [Post to Pharo mailinglist](https://lists.gforge.inria.fr/pipermail/pharo-project/2013-March/076598.html)
 - [Original announcement on Astares blog](https://astares.blogspot.com/2013/03/pomodoro-for-pharo-20.html)
 - Initial [repo on SmalltalkHub](http://smalltalkhub.com/#!/~TorstenBergmann/Pomodoro)
