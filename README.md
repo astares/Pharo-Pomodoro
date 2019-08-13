@@ -2,7 +2,7 @@
 Pomodoro Timer for Pharo 
 
 ## About
-The Pomodoro Timer for Pharo was written by T. Bergmann (Astares). The following people contributed to it:
+The Pomodoro Timer for Pharo was written by T. Bergmann (Astares). The following people additionally contributed code to it:
 - Phillipe Back (compatibility to Dark Theme)
 - StephanEggermont (taskbar integration, cleanups)
 
@@ -11,6 +11,9 @@ The Pomodoro Timer for Pharo was written by T. Bergmann (Astares). The following
 
 ## Video
 [![Watch the video](https://img.youtube.com/vi/voSUzOu5feU/hqdefault.jpg)](https://youtu.be/voSUzOu5feU)
+
+## LICENSE
+MIT License
 
 # Quick Start
 ## Installation via Catalog
