@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'morph'
 	],
-	#category : #'Pomodoro-Core-Tests-UI'
+	#category : #'Pomodoro-UI-Morphic-Tests-Base'
 }
 
 { #category : #accessing }
