@@ -15,12 +15,12 @@ BaselineOfPomodoro >> baseline: spec [
 			"Packages"
 			spec 
 				package: 'Pomodoro-Core';
-				package: 'Pomodoro-Tests-Core' with: [ spec requires: #('Pomodoro-Core') ].
+				package: 'Pomodoro-Core-Tests' with: [ spec requires: #('Pomodoro-Core') ].
 			
 			"Groups"	
 			spec	
 				group: 'Core' with: #('Pomodoro-Core');
-				group: 'Tests' with: #('Pomodoro-Tests-Core');
+				group: 'Tests' with: #('Pomodoro-Core-Tests');
 				group: 'all' with: #('Core' 'Tests');
 				group: 'default' with: #('all') ]
 ]
