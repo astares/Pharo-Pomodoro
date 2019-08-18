@@ -23,7 +23,7 @@ BaselineOfPomodoro >> baseline: spec [
 			spec	
 				group: 'Core' with: #('Pomodoro-Core');
 				group: 'UI-Morphic' with: #('Pomodoro-UI-Morphic');
-				group: 'Tests' with: #('Pomodoro-Core-Tests');
+				group: 'Tests' with: #('Pomodoro-Core-Tests' 'Pomodoro-UI-Morphic-Tests');
 				group: 'all' with: #('Core' 'UI-Morphic' 'Tests');
 				group: 'default' with: #('all') ]
 ]
