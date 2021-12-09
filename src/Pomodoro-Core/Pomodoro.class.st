@@ -40,7 +40,7 @@ Pomodoro class >> example3 [
 	<example>
 		
 	(self totalDuration: 3 seconds)
-		finishedAction: [ ClyFullBrowser open ];
+		finishedAction: [ Smalltalk tools browser open ];
 		open
 ]
 
