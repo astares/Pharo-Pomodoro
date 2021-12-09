@@ -119,8 +119,9 @@ PomodoroMorph >> collapseBoxHit [
 
 { #category : #'private - accessing' }
 PomodoroMorph >> displayClock [
+
 	displayClock ifNil: [ displayClock := self initialClockTextMorph ].
-	^displayClock
+	^ displayClock
 ]
 
 { #category : #'private - initialization' }
