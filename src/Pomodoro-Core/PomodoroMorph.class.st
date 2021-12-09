@@ -7,7 +7,6 @@ Class {
 	#instVars : [
 		'pomodoro',
 		'displayClock',
-		'stopWatch',
 		'progressBar',
 		'pauseButton',
 		'isMinimized',

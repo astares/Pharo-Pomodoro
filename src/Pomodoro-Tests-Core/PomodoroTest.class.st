@@ -114,11 +114,10 @@ PomodoroTest >> testLazyStopWatch [
 { #category : #testing }
 PomodoroTest >> testOpenMorph [
 
-	|morph|
+	| morph |
 	morph := self defaultTestClass new open.
-	self assert: morph visible.	
+	self assert: morph visible.
 	morph delete
-	 
 ]
 
 { #category : #testing }

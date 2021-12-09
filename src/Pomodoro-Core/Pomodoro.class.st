@@ -113,38 +113,38 @@ Pomodoro class >> totalDuration: aDuration [
 Pomodoro >> alreadyElapsed: aDuration [
 	"Inform the receiver that there is already a duation elapsed. If more than
 	 the total duration there is no duration remaining for the pomodoro"
-	
-	aDuration > self totalDuration 
+
+	aDuration > self totalDuration
 		ifTrue: [ self finish ]
 		ifFalse: [ self remainingDuration: self totalDuration - aDuration ]
-	
 ]
 
 { #category : #'private - initialization' }
 Pomodoro >> createStopWatch [
 
-	^Stopwatch new
+	^ Stopwatch new
 ]
 
 { #category : #defaults }
 Pomodoro >> defaultFinishedAction [
 	"Returns a default action to be performed when finished"
-	
-	^[ self inform: 'Pomodoro finished'.		    
-	    Beeper beepPrimitive ]
+
+	^ [ 
+	  self inform: 'Pomodoro finished'.
+	  Beeper beepPrimitive ]
 ]
 
 { #category : #defaults }
 Pomodoro >> defaultTotalDuration [
 	"Returns the default total duration"
-	
-	^PomodoroSettings defaultTimeInMinutes minutes
+
+	^ PomodoroSettings defaultTimeInMinutes minutes
 ]
 
 { #category : #running }
 Pomodoro >> finish [
-	self isFinished
-		ifTrue: [ ^ self ].
+
+	self isFinished ifTrue: [ ^ self ].
 	self remainingDuration: 0 seconds.
 	finishedAction value.
 	self state: #finished
@@ -183,19 +183,19 @@ Pomodoro >> isActive [
 { #category : #testing }
 Pomodoro >> isFinished [
 
-	^self state = #finished
+	^ self state = #finished
 ]
 
 { #category : #testing }
 Pomodoro >> isPaused [
 
-	^self state = #paused
+	^ self state = #paused
 ]
 
 { #category : #testing }
 Pomodoro >> isReady [
 
-	^self state = #ready
+	^ self state = #ready
 ]
 
 { #category : #testing }
