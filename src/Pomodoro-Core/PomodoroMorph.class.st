@@ -460,10 +460,11 @@ PomodoroMorph >> taskbarButtonClicked [
 	Otherwise make active."
 
 	self isMinimized
-		ifTrue: [self restore]
-		ifFalse: [self isActive
-					ifTrue: [self minimize]
-					ifFalse: [self isActive: true]]
+		ifTrue: [ self restore ]
+		ifFalse: [ 
+			self isActive
+				ifTrue: [ self minimize ]
+				ifFalse: [ self isActive: true ] ]
 ]
 
 { #category : #taskbar }
@@ -474,13 +475,11 @@ PomodoroMorph >> taskbarButtonEntered: aButton event: evt in: aMorph [
 { #category : #taskbar }
 PomodoroMorph >> taskbarButtonFor: aTaskbar [
 	"Answer a new task bar button for the receiver.
-	Answer nil if not required."
+	 Answer nil if not required."
 
-	^(aTaskbar theme
-			newTaskbarButtonIn: aTaskbar
-			for: self)
-			paneColor: self color;
-			yourself
+	^ (aTaskbar theme newTaskbarButtonIn: aTaskbar for: self)
+		  paneColor: self color;
+		  yourself
 ]
 
 { #category : #taskbar }
@@ -489,37 +488,42 @@ PomodoroMorph >> taskbarButtonLeft: aButton event: evt in: aMorph [
 ]
 
 { #category : #taskbar }
-PomodoroMorph >> taskbarButtonMenu: aMenuMorph [ 
-	aMenuMorph 
+PomodoroMorph >> taskbarButtonMenu: aMenuMorph [
+
+	aMenuMorph
 		add: 'Start' selector: #start;
 		add: 'Pause' selector: #pause;
 		add: 'Stop' selector: #stop;
 		addLine;
 		add: 'Delete' selector: #delete.
-	^aMenuMorph
+	^ aMenuMorph
 ]
 
 { #category : #taskbar }
 PomodoroMorph >> taskbarIcon [
-	^self class menuIcon
+
+	^ self class menuIcon
 ]
 
 { #category : #taskbar }
 PomodoroMorph >> taskbarLabel [
-	^Pomodoro formatDuration: pomodoro remainingDuration
+
+	^ Pomodoro formatDuration: pomodoro remainingDuration
 ]
 
 { #category : #taskbar }
 PomodoroMorph >> taskbarState [
 	"Answer one of #minimized, #restored, #maximized or #active."
 
-	^self isMinimized
-		ifTrue: [#minimized]
-		ifFalse: [self isMaximized
-			ifTrue: [#maximized]
-			ifFalse: [self isActive
-						ifTrue: [#active]
-						ifFalse: [#restored]]]
+	^ self isMinimized
+		  ifTrue: [ #minimized ]
+		  ifFalse: [ 
+			  self isMaximized
+				  ifTrue: [ #maximized ]
+				  ifFalse: [ 
+					  self isActive
+						  ifTrue: [ #active ]
+						  ifFalse: [ #restored ] ] ]
 ]
 
 { #category : #taskbar }
@@ -527,12 +531,13 @@ PomodoroMorph >> taskbarTask [
 	"Answer a new taskbar task for the receiver.
 	Answer nil if not required."
 
-	(self valueOfProperty: #noTaskbarTask ifAbsent: [false]) ifTrue: [^nil].
-	^TaskbarTask
-		morph: self
-		state: self taskbarState
-		icon: self taskbarIcon
-		label: self taskbarLabel
+	(self valueOfProperty: #noTaskbarTask ifAbsent: [ false ]) ifTrue: [ 
+		^ nil ].
+	^ TaskbarTask
+		  morph: self
+		  state: self taskbarState
+		  icon: self taskbarIcon
+		  label: self taskbarLabel
 ]
 
 { #category : #'private - updating' }
