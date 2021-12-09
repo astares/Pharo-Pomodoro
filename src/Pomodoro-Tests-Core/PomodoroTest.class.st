@@ -57,14 +57,15 @@ PomodoroTest >> testDefaultFinishedAction [
 
 { #category : #testing }
 PomodoroTest >> testDefaultTotalDuration [
+
 	self assert: pomodoro defaultTotalDuration equals: 25 minutes
 ]
 
 { #category : #testing }
 PomodoroTest >> testFinish [
 
-	|actionRun|
-	actionRun := false.	
+	| actionRun |
+	actionRun := false.
 	pomodoro finishedAction: [ actionRun := true ].
 	pomodoro finish.
 	self assert: actionRun.
