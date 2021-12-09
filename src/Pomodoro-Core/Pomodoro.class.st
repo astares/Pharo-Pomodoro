@@ -88,7 +88,7 @@ Pomodoro class >> open [
 Pomodoro class >> timerFor: aDuration [ 
 	"Open a new pomodoro timer for the given duration."
 	
-	^(self totalDuration: aDuration) open		 
+	^(self totalDuration: aDuration) open
 ]
 
 { #category : #'instance creation' }
@@ -97,7 +97,7 @@ Pomodoro class >> timerFor: aDuration whenFinishedDo: aBlock [
 	
 	^(self totalDuration: aDuration)
 		finishedAction: aBlock;
-		open		 
+		open
 ]
 
 { #category : #'instance creation' }
@@ -155,7 +155,7 @@ Pomodoro >> finishedAction [
 	"Returns the finished action"
 	
 	finishedAction ifNil: [ finishedAction := self defaultFinishedAction ].
-	^finishedAction 
+	^finishedAction
 ]
 
 { #category : #accessing }

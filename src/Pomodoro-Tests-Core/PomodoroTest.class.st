@@ -96,13 +96,13 @@ PomodoroTest >> testInitialState [
 { #category : #testing }
 PomodoroTest >> testInitializedWithDefaultTotalDuration [
 
-	self assert: pomodoro totalDuration equals: pomodoro defaultTotalDuration 
+	self assert: pomodoro totalDuration equals: pomodoro defaultTotalDuration
 ]
 
 { #category : #testing }
 PomodoroTest >> testIsNotActiveByDefault [
 
-	self deny: pomodoro isActive 
+	self deny: pomodoro isActive
 ]
 
 { #category : #testing }
@@ -126,7 +126,6 @@ PomodoroTest >> testPrintString [
 	self assert: pomodoro printString equals: '25:00 interval pomodoro with 25:00 remaining'.
 	pomodoro totalDurationInMinutes: 10.
 	self assert: pomodoro printString equals: '10:00 interval pomodoro with 10:00 remaining'
-	
 ]
 
 { #category : #testing }
@@ -134,7 +133,6 @@ PomodoroTest >> testPrintStringIfMoreThanAnHour [
 
 	pomodoro totalDuration: 63 minutes.
 	self assert: pomodoro printString equals: '01:03:00 interval pomodoro with 01:03:00 remaining'
-	
 ]
 
 { #category : #testing }

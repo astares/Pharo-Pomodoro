@@ -27,7 +27,7 @@ PomodoroMorphTest >> setUp [
 { #category : #testing }
 PomodoroMorphTest >> testCachedMenuItem [
 	
-	self assert: self defaultTestClass menuIcon == self defaultTestClass menuIcon 
+	self assert: self defaultTestClass menuIcon == self defaultTestClass menuIcon
 ]
 
 { #category : #testing }

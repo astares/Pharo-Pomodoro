@@ -37,9 +37,7 @@ PomodoroSettings class >> finishedColor: aColor [
 PomodoroSettings class >> open [
 	<script>
 	
-	(SettingBrowser forKeywords: #('pomodorosettings')) open. 
- 
- 
+	(SettingBrowser forKeywords: #('pomodorosettings')) open.
 ]
 
 { #category : #accessing }
@@ -79,7 +77,7 @@ PomodoroSettings class >> pomodoroSettingsOn: aBuilder [
 					label: 'Open new timer';
 					actionSelector: #open;
 					themeChanged;
-					yourself ] 
+					yourself ]
 ]
 
 { #category : #accessing }
