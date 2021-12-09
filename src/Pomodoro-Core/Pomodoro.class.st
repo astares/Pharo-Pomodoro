@@ -81,6 +81,7 @@ Pomodoro class >> formatDuration: aDuration [
 { #category : #'instance creation' }
 Pomodoro class >> open [
 	<script>
+	
 	^self new open
 ]
 
@@ -177,7 +178,7 @@ Pomodoro >> initialize [
 { #category : #testing }
 Pomodoro >> isActive [
 
-	^self stopWatch isActive
+	^ self stopWatch isActive
 ]
 
 { #category : #testing }
@@ -201,14 +202,14 @@ Pomodoro >> isReady [
 { #category : #testing }
 Pomodoro >> isStarted [
 
-	^self state = #started
+	^ self state = #started
 ]
 
 { #category : #operations }
 Pomodoro >> open [
 	"Open a visual view on the receiver"
 	
-	^(PomodoroMorph on: self) openInWorld
+	^ (PomodoroMorph on: self) openInWorld
 ]
 
 { #category : #running }
@@ -232,7 +233,7 @@ Pomodoro >> printOn: aStream [
 Pomodoro >> remainingDuration [
 	"Returns the receivers remaining time"
 	 
-	^remainingDuration
+	^ remainingDuration
 ]
 
 { #category : #accessing }

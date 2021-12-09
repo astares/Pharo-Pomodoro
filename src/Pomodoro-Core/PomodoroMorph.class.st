@@ -20,35 +20,37 @@ Class {
 }
 
 { #category : #private }
-PomodoroMorph class >> createMenuIcon [ 
+PomodoroMorph class >> createMenuIcon [
 
-	^Form fromBinaryStream: self menuIconContent base64Decoded readStream
+	^ Form fromBinaryStream:
+		  self menuIconContent base64Decoded readStream
 ]
 
 { #category : #'world menu' }
-PomodoroMorph class >> menuCommandOn: aBuilder [ 
-	"Add a custom menu item to the world menu"	
-	<worldMenu> 
-	
-	(aBuilder item: #'Pomodoro')
-	       icon: self menuIcon;  
-			 parent: #'Tools';
-			 help: 'Open Pomodoro';
-			 action: [ self new openInWorld ].
+PomodoroMorph class >> menuCommandOn: aBuilder [
+	"Add a custom menu item to the world menu"
+
+	<worldMenu>
+	(aBuilder item: #Pomodoro)
+		icon: self menuIcon;
+		parent: #Tools;
+		help: 'Open Pomodoro';
+		action: [ self new openInWorld ]
 ]
 
 { #category : #accessing }
 PomodoroMorph class >> menuIcon [
 	"Cache the menu item"
-	
-	menuIcon isNil ifTrue: [ menuIcon := self createMenuIcon ].
-	^menuIcon
+
+	menuIcon ifNil: [ menuIcon := self createMenuIcon ].
+	^ menuIcon
 ]
 
 { #category : #private }
 PomodoroMorph class >> menuIconContent [
 	"
-	(Base64MimeConverter mimeEncode: (FileStream readOnlyFileNamed: 'pomodoro.png') binary) contents
+	 'pomodoro.png' asFileReference binaryReadStreamDo: [:stream |
+		base64Contents := (Base64MimeConverter mimeEncode: stream) contents ]	
 	"
 	
 	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADL0lEQVQ4y3WTSWwbdRjFfzNj
