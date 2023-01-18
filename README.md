@@ -24,7 +24,7 @@ You can install Pomodoro directly from the Pharo catalog.
 
 ```Smalltalk
 Metacello new 
-	repository: 'github://astares/Pharo-Pomodoro/src';
+	repository: 'github://astares/Pharo-Pomodoro:main/src';
 	baseline: 'Pomodoro';
 	load
 ```
