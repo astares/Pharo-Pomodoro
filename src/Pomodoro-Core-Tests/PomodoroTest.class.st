@@ -13,21 +13,21 @@ Class {
 { #category : #accessing }
 PomodoroTest >> defaultTestClass [
 	"Returns the class to test"
-	
+
 	^Pomodoro
 ]
 
 { #category : #running }
 PomodoroTest >> setUp [
 	"Sets up the receivers test case"
-	
+
 	super setUp.
 	pomodoro := self defaultTestClass new.
 	pomodoro finishedAction: [ ]  "do nothing while running tests"
 ]
 
 { #category : #running }
-PomodoroTest >> tearDown [ 	
+PomodoroTest >> tearDown [
 
 	pomodoro := nil.
 	super tearDown
@@ -77,7 +77,7 @@ PomodoroTest >> testFinished [
 
 	self deny: pomodoro isFinished.
 	pomodoro finish.
-	self 
+	self
 		assert: pomodoro isFinished;
 		assert: pomodoro state equals: #finished
 ]
@@ -163,7 +163,7 @@ PomodoroTest >> testStarted [
 
 	self deny: pomodoro isStarted.
 	pomodoro start.
-	self 
+	self
 		assert: pomodoro isStarted;
 		assert: pomodoro state equals: #started
 ]

@@ -18,8 +18,8 @@ PomodoroMorphTest >> defaultTestClass [
 ]
 
 { #category : #running }
-PomodoroMorphTest >> setUp [	
-	
+PomodoroMorphTest >> setUp [
+
 	super setUp.
 	morph := self defaultTestClass new
 ]

@@ -40,8 +40,8 @@ PomodoroSettings class >> finishedColor: aColor [
 { #category : #actions }
 PomodoroSettings class >> open [
 	<script>
-	
-	(SettingBrowser forKeywords: #('pomodorosettings')) open.
+
+	(SettingBrowser forKeywords: #('pomodorosettings')) open
 ]
 
 { #category : #accessing }
@@ -64,7 +64,7 @@ PomodoroSettings class >> pomodoroSettingsOn: aBuilder [
 	(aBuilder group: #pomodoroSettings)
 		label: 'Pomodoro';
 		description: 'All settings for Pomodoro timer';
-		with: [ 
+		with: [
 			(aBuilder setting: #progressBarColor)
 				label: 'Progress bar color';
 				description: 'The progress bar color to use'.
@@ -77,7 +77,7 @@ PomodoroSettings class >> pomodoroSettingsOn: aBuilder [
 			(aBuilder setting: #defaultTimeInMinutes)
 				label: 'Default time (minutes)';
 				description: 'The default time in minutes' ];
-		dialog: [ 
+		dialog: [
 			SimpleButtonMorph new
 				target: Pomodoro;
 				label: 'Open new timer';
@@ -89,7 +89,7 @@ PomodoroSettings class >> pomodoroSettingsOn: aBuilder [
 { #category : #accessing }
 PomodoroSettings class >> progressBarColor [
 
-	^ ProgressBarColor ifNil: [ 
+	^ ProgressBarColor ifNil: [
 		  ProgressBarColor := Smalltalk ui theme class lightSelectionColor ]
 ]
 
@@ -102,9 +102,9 @@ PomodoroSettings class >> progressBarColor: anObject [
 { #category : #'class initialization' }
 PomodoroSettings class >> reset [
 	<script>
-	
+
 	ProgressBarColor := nil.
 	PauseColor := nil.
-	FinishedColor := nil. 
-	DefaultTimeInMinutes := 25.
+	FinishedColor := nil.
+	DefaultTimeInMinutes := 25
 ]

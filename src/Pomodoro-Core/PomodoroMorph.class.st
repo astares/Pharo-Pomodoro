@@ -50,9 +50,9 @@ PomodoroMorph class >> menuIcon [
 PomodoroMorph class >> menuIconContent [
 	"
 	 'pomodoro.png' asFileReference binaryReadStreamDo: [:stream |
-		base64Contents := (Base64MimeConverter mimeEncode: stream) contents ]	
+		base64Contents := (Base64MimeConverter mimeEncode: stream) contents ]
 	"
-	
+
 	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADL0lEQVQ4y3WTSWwbdRjFfzNj
 z4wdx3az2InTpKFNo6RKDvRAynKp2rRRISKKUA9IILEcekIcOAHqKVJPCCEkLlxYpBaBKCA2
 tYUDkRAKjdQlNBVum8StE9uxE29jz3/Gs3AIiipR3uXTk973Tr8H/6NSo5D8ZOWzd2zPDgLY
@@ -93,9 +93,9 @@ PomodoroMorph >> buildWindowMenu [
 	| aMenu |
 	aMenu := UIManager default
 					newMenuIn: self for: self.
-	aMenu add: 'Open settings...' selector: #openSettings.	 
-	aMenu add: 'Set time' selector: #setTime.		
-	aMenu add: 'Set action' selector: #setAction.				
+	aMenu add: 'Open settings...' selector: #openSettings.
+	aMenu add: 'Set time' selector: #setTime.
+	aMenu add: 'Set action' selector: #setAction.
 	^aMenu
 ]
 
@@ -133,31 +133,31 @@ PomodoroMorph >> initButtons [
 					on: self
 					getState: #startButtonEnabled
 					action: #start.
-	startButton label: 'Start'.		
-						
+	startButton label: 'Start'.
+
 	stopButton := 	PluggableButtonMorph
 					on: self
 					getState: #stopButtonEnabled
-					action: #stop.								
+					action: #stop.
 	stopButton label: 'Stop'.
 
 	pauseButton := 	PluggableButtonMorph
 					on: self
 					getState: #pauseButtonEnabled
-					action: #pause.								
+					action: #pause.
 	pauseButton label: 'Pause'; position: 100@(self extent y - 30).
-			 
-	self 
+
+	self
 		addMorph: startButton fullFrame: #(0 1 0.33 1 5 -35 -5 -10) asLayoutFrame;
 		addMorph: stopButton fullFrame: #(0.33 1 0.66 1 5 -35 -5 -10) asLayoutFrame;
- 		addMorph: pauseButton fullFrame: #(0.66 1 1 1 5 -35 -5 -10) asLayoutFrame.
+ 		addMorph: pauseButton fullFrame: #(0.66 1 1 1 5 -35 -5 -10) asLayoutFrame
 ]
 
 { #category : #'private - initialization' }
 PomodoroMorph >> initClock [
 	|clock|
-	clock := self displayClock.	 
-	self addMorph: clock fullFrame: {0.5. 0. 0.5. 0.5. (clock extent x) negated. 5. 0. 0.} asLayoutFrame.
+	clock := self displayClock.
+	self addMorph: clock fullFrame: {0.5. 0. 0.5. 0.5. (clock extent x) negated. 5. 0. 0.} asLayoutFrame
 ]
 
 { #category : #'private - initialization' }
@@ -166,7 +166,7 @@ PomodoroMorph >> initCloseBox [
 	| closeBox ext |
 	closeBox := self theme createCloseBoxFor: self.
 	ext := self boxExtent.
-	self addMorph: closeBox fullFrame: {0. 0. 0. 0. 2. 2. 2 + ext x. 2 + ext y.} asLayoutFrame.
+	self addMorph: closeBox fullFrame: {0. 0. 0. 0. 2. 2. 2 + ext x. 2 + ext y.} asLayoutFrame
 ]
 
 { #category : #'private - initialization' }
@@ -175,7 +175,7 @@ PomodoroMorph >> initCollapseBox [
 	| collapseBox ext |
 	collapseBox := self theme createCollapseBoxFor: self.
 	ext := self boxExtent.
-	self addMorph: collapseBox fullFrame: {0. 0. 0. 0. 2 + ext x. 2. 2 + (ext x * 2). 2 + ext y.} asLayoutFrame.
+	self addMorph: collapseBox fullFrame: {0. 0. 0. 0. 2 + ext x. 2. 2 + (ext x * 2). 2 + ext y.} asLayoutFrame
 ]
 
 { #category : #'private - initialization' }
@@ -184,7 +184,7 @@ PomodoroMorph >> initMenuBox [
 	| menuBox ext |
 	menuBox := self theme createMenuBoxFor: self.
 	ext := self boxExtent.
-	self addMorph: menuBox fullFrame: {1. 0. 1. 0. (2 + ext x) negated. 2. 0. 2 + ext y.} asLayoutFrame.
+	self addMorph: menuBox fullFrame: {1. 0. 1. 0. (2 + ext x) negated. 2. 0. 2 + ext y.} asLayoutFrame
 ]
 
 { #category : #'private - initialization' }
@@ -194,7 +194,7 @@ PomodoroMorph >> initMorph [
 	self color: self standardColor.
 	self
 		 borderRaised;
-		 extent: 200@105.
+		 extent: 200@105
 ]
 
 { #category : #'private - initialization' }
@@ -207,10 +207,10 @@ PomodoroMorph >> initProgressBar [
 ]
 
 { #category : #'private - accessing' }
-PomodoroMorph >> initialClockTextMorph [ 
+PomodoroMorph >> initialClockTextMorph [
 
-	^(TextMorph new) 
-		contents: '00:00'; 
+	^(TextMorph new)
+		contents: '00:00';
 		font: (LogicalFont familyName: 'Source Sans Pro' pointSize: 20);
 		lock;
 		yourself
@@ -219,11 +219,11 @@ PomodoroMorph >> initialClockTextMorph [
 { #category : #initialization }
 PomodoroMorph >> initialize [
 	"Initializes the receiver"
-	
-	super initialize.	
+
+	super initialize.
 	isMinimized := false.
 	isActive := true.
- 	self 
+ 	self
 		initMorph;
 		initCloseBox;
 		initCollapseBox;
@@ -279,8 +279,8 @@ PomodoroMorph >> maximize [
 PomodoroMorph >> minimize [
 
 	self isMinimized ifTrue: [ ^ self ].
-	
-	self 
+
+	self
 		isMinimized: true;
 		isActive: false
 ]
@@ -307,7 +307,7 @@ PomodoroMorph >> modelClass [
 { #category : #'private - menu' }
 PomodoroMorph >> offerWindowMenu [
 	"Popup the window menu."
-	
+
 	| aMenu |
 	aMenu := self buildWindowMenu.
 	aMenu popUpEvent: self currentEvent in: self world
@@ -324,7 +324,7 @@ PomodoroMorph >> onFinished [
 
 { #category : #'private - events' }
 PomodoroMorph >> onStepping [
- 
+
 	self model alreadyElapsed: self stopWatch duration.
 	self changed
 ]
@@ -337,8 +337,8 @@ PomodoroMorph >> openSettings [
 { #category : #actions }
 PomodoroMorph >> pause [
 	self model isReady ifTrue: [ ^self ].
-	self model isPaused 
-		ifTrue: [ 
+	self model isPaused
+		ifTrue: [
 			self color: self standardColor.
 			self model start ]
 		ifFalse: [
@@ -367,9 +367,9 @@ PomodoroMorph >> reset [
 
 { #category : #actions }
 PomodoroMorph >> restore [
-	self isMinimized ifTrue: [ 
-		self maximize.  
-		self activate ] 
+	self isMinimized ifTrue: [
+		self maximize.
+		self activate ]
 	ifFalse: [ self minimize ]
 ]
 
@@ -381,10 +381,10 @@ PomodoroMorph >> setAction [
 					request: 'Enter action expression'
 					initialAnswer: 'WebBrowser openOn: ''http://www.pharo.org'''
 					title: 'Set action'.
-	action ifNil: [ ^self ].		
+	action ifNil: [ ^self ].
 	action	 := '[', action, ']'.
 	self model finishedAction: (self class compiler evaluate: action).
-	self changed.
+	self changed
 ]
 
 { #category : #actions }
@@ -395,9 +395,9 @@ PomodoroMorph >> setTime [
 					request: 'Enter time'
 					initialAnswer: '5 minutes'
 					title: 'Set time'.
-	time ifNil: [ ^self ].				
+	time ifNil: [ ^self ].
 	self model totalDuration: (self class compiler evaluate: time).
-	self changed.
+	self changed
 ]
 
 { #category : #'private - accessing' }
@@ -450,7 +450,7 @@ PomodoroMorph >> stopButtonEnabled [
 
 { #category : #'private - accessing' }
 PomodoroMorph >> stopWatch [
-	
+
 	^self model stopWatch
 ]
 
@@ -463,7 +463,7 @@ PomodoroMorph >> taskbarButtonClicked [
 
 	self isMinimized
 		ifTrue: [ self restore ]
-		ifFalse: [ 
+		ifFalse: [
 			self isActive
 				ifTrue: [ self minimize ]
 				ifFalse: [ self isActive: true ] ]
@@ -519,10 +519,10 @@ PomodoroMorph >> taskbarState [
 
 	^ self isMinimized
 		  ifTrue: [ #minimized ]
-		  ifFalse: [ 
+		  ifFalse: [
 			  self isMaximized
 				  ifTrue: [ #maximized ]
-				  ifFalse: [ 
+				  ifFalse: [
 					  self isActive
 						  ifTrue: [ #active ]
 						  ifFalse: [ #restored ] ] ]
@@ -533,7 +533,7 @@ PomodoroMorph >> taskbarTask [
 	"Answer a new taskbar task for the receiver.
 	Answer nil if not required."
 
-	(self valueOfProperty: #noTaskbarTask ifAbsent: [ false ]) ifTrue: [ 
+	(self valueOfProperty: #noTaskbarTask ifAbsent: [ false ]) ifTrue: [
 		^ nil ].
 	^ TaskbarTask
 		  morph: self
@@ -545,30 +545,30 @@ PomodoroMorph >> taskbarTask [
 { #category : #'private - updating' }
 PomodoroMorph >> updateButtons [
 	startButton ifNotNil: [:button |
-		button 
+		button
 			label:
 				(self model isReady
 					ifTrue: [ 'Start' ]
 					ifFalse: [ 'Restart' ])].
 
 	pauseButton ifNotNil: [:button |
-		button 
+		button
 			label:
 				(self model isPaused
 					ifTrue: [ 'Continue' ]
-					ifFalse: [ 'Pause' ])].
+					ifFalse: [ 'Pause' ])]
 ]
 
 { #category : #'private - updating' }
 PomodoroMorph >> updateClock [
 	"Update the clocks contents"
-	
+
 	displayClock ifNil: [ ^self ].
 	displayClock contents: self model remainingDurationString
 ]
 
 { #category : #'private - updating' }
-PomodoroMorph >> updateProgressBar [  
+PomodoroMorph >> updateProgressBar [
 	self progressBar endAt: self model totalDuration asSeconds.
-	self progressBar value: self model remainingDuration asSeconds.
+	self progressBar value: self model remainingDuration asSeconds
 ]
