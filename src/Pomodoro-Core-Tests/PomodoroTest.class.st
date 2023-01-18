@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'pomodoro'
 	],
-	#category : #'Pomodoro-Tests-Core-Model'
+	#category : #'Pomodoro-Core-Tests-Model'
 }
 
 { #category : #accessing }

@@ -1,5 +1,7 @@
 "
-A baseline for Astares implementation of Pomodoro timer for Pharo 
+A baseline for Astares implementation of Pomodoro timer for Pharo.
+
+See [https://github.com/astares/Pharo-Pomodoro](https://github.com/astares/Pharo-Pomodoro)
 "
 Class {
 	#name : #BaselineOfPomodoro,
@@ -15,12 +17,12 @@ BaselineOfPomodoro >> baseline: spec [
 			"Packages"
 			spec 
 				package: 'Pomodoro-Core';
-				package: 'Pomodoro-Tests-Core' with: [ spec requires: #('Pomodoro-Core') ].
+				package: 'Pomodoro-Core-Tests' with: [ spec requires: #('Pomodoro-Core') ].
 			
 			"Groups"	
 			spec	
 				group: 'Core' with: #('Pomodoro-Core');
-				group: 'Tests' with: #('Pomodoro-Tests-Core');
+				group: 'Tests' with: #('Pomodoro-Core-Tests');
 				group: 'all' with: #('Core' 'Tests');
 				group: 'default' with: #('all') ]
 ]
