@@ -7,7 +7,7 @@ The Pomodoro Timer for Pharo is written and maintained by T. Bergmann (Astares).
 - Phillipe Back (initial experiment [HighOctane-Pomodoro](http://smalltalkhub.com/#!/~philippeback/HOPomodoro), added compatibility to Dark Theme)
 - StephanEggermont (taskbar integration, cleanups)
 
-[![Unit Tests](https://github.com/astares/Pharo-Pomodoro/workflows/Unit%20Tests/badge.svg?branch=main)](https://github.com/astares/Pharo-Pomodoro/actions?query=workflow%3AUnit%20Tests)
+[![Unit Tests](https://github.com/astares/Pharo-Pomodoro/workflows/Build/badge.svg?branch=main)](https://github.com/astares/Pharo-Pomodoro/actions?query=workflow%3ABuild)
 [![Coverage Status](https://codecov.io/github/astares/Pharo-Pomodoro/coverage.svg?branch=main)](https://codecov.io/gh/astares/Pharo-Pomodoro/branch/main)
 
 
