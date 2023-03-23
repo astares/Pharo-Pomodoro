@@ -90,7 +90,7 @@ PomodoroSettings class >> pomodoroSettingsOn: aBuilder [
 PomodoroSettings class >> progressBarColor [
 
 	^ ProgressBarColor ifNil: [
-		  ProgressBarColor := Smalltalk ui theme class lightSelectionColor ]
+		  ProgressBarColor := Smalltalk ui theme lightSelectionColor ]
 ]
 
 { #category : #accessing }
