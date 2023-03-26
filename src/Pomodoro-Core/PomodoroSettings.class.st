@@ -13,6 +13,14 @@ Class {
 	#category : #'Pomodoro-Core-Settings'
 }
 
+{ #category : #'accessing - defaults' }
+PomodoroSettings class >> defaultProgressBarColor [
+
+	^ SystemVersion current major > 10 
+			ifTrue: [  Smalltalk ui theme lightSelectionColor ]
+			ifFalse: [ Smalltalk ui theme class lightSelectionColor ]
+]
+
 { #category : #accessing }
 PomodoroSettings class >> defaultTimeInMinutes [
 
@@ -90,7 +98,7 @@ PomodoroSettings class >> pomodoroSettingsOn: aBuilder [
 PomodoroSettings class >> progressBarColor [
 
 	^ ProgressBarColor ifNil: [
-		  ProgressBarColor := Smalltalk ui theme lightSelectionColor ]
+		  ProgressBarColor := self defaultProgressBarColor ]
 ]
 
 { #category : #accessing }
