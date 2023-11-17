@@ -16,10 +16,6 @@ The Pomodoro Timer for Pharo is written and maintained by T. Bergmann (Astares).
 [![Pharo 11](https://img.shields.io/badge/Pharo-11-%23aac9ff.svg)](https://pharo.org/download)
 
 # Quick Start
-## Installation via Catalog
-
-You can install Pomodoro directly from the Pharo catalog.
-
 ## Installation via Script
 
 ```Smalltalk
