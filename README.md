@@ -2,8 +2,9 @@
 **Pomodoro Timer** for [Pharo](http://www.pharo.org) following the [Pomodoro Technique](http://en.wikipedia.org/wiki/Pomodoro_Technique)
 
 ## About
-The Pomodoro Timer for Pharo is written and maintained by T. Bergmann (Astares). The following people additionally contributed code to this project:
+The Pomodoro Timer for Pharo is written and maintained by T. Bergmann (Astares). Its a tool to practice [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique)
 
+The following people additionally contributed code to this project:
 - Phillipe Back (initial experiment [HighOctane-Pomodoro](http://smalltalkhub.com/#!/~philippeback/HOPomodoro), added compatibility to Dark Theme)
 - StephanEggermont (taskbar integration, cleanups)
 
