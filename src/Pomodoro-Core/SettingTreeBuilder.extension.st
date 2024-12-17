@@ -1,6 +1,6 @@
-Extension { #name : #SettingTreeBuilder }
+Extension { #name : 'SettingTreeBuilder' }
 
-{ #category : #'*Pomodoro-Core' }
+{ #category : '*Pomodoro-Core' }
 SettingTreeBuilder >> pomodorosettings [
 	"Process a <pomodorosettings> pragma"
 

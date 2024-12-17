@@ -9,8 +9,8 @@ duration
 
 "
 Class {
-	#name : #Pomodoro,
-	#superclass : #Object,
+	#name : 'Pomodoro',
+	#superclass : 'Object',
 	#instVars : [
 		'totalDuration',
 		'remainingDuration',
@@ -18,24 +18,26 @@ Class {
 		'state',
 		'stopWatch'
 	],
-	#category : #'Pomodoro-Core-Model'
+	#category : 'Pomodoro-Core-Model',
+	#package : 'Pomodoro-Core',
+	#tag : 'Model'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 Pomodoro class >> example1 [
 	<example>
 
 	self new open
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 Pomodoro class >> example2 [
 	<example>
 
 	(self totalDuration: 1 minute) open
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 Pomodoro class >> example3 [
 	<example>
 
@@ -44,14 +46,14 @@ Pomodoro class >> example3 [
 		open
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 Pomodoro class >> example4 [
 	<example>
 
 	self timerFor: 10 seconds
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 Pomodoro class >> example5 [
 	<example>
 
@@ -59,7 +61,7 @@ Pomodoro class >> example5 [
 			     whenFinishedDo: [ self inform: 'Pomodoro finished']
 ]
 
-{ #category : #'private - formatting' }
+{ #category : 'private - formatting' }
 Pomodoro class >> formatDuration: aDuration [
 
 	| h m s |
@@ -78,21 +80,21 @@ Pomodoro class >> formatDuration: aDuration [
 		s printOn: aStream ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 Pomodoro class >> open [
 	<script>
 
 	^self new open
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 Pomodoro class >> timerFor: aDuration [
 	"Open a new pomodoro timer for the given duration."
 
 	^(self totalDuration: aDuration) open
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 Pomodoro class >> timerFor: aDuration whenFinishedDo: aBlock [
 	"Open a new pomodoro timer for the given duration."
 
@@ -101,7 +103,7 @@ Pomodoro class >> timerFor: aDuration whenFinishedDo: aBlock [
 		open
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 Pomodoro class >> totalDuration: aDuration [
 	"Return a new instance of the receiver with the given total duration"
 
@@ -110,7 +112,7 @@ Pomodoro class >> totalDuration: aDuration [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Pomodoro >> alreadyElapsed: aDuration [
 	"Inform the receiver that there is already a duation elapsed. If more than
 	 the total duration there is no duration remaining for the pomodoro"
@@ -120,29 +122,27 @@ Pomodoro >> alreadyElapsed: aDuration [
 		ifFalse: [ self remainingDuration: self totalDuration - aDuration ]
 ]
 
-{ #category : #'private - initialization' }
+{ #category : 'private - initialization' }
 Pomodoro >> createStopWatch [
 
 	^ Stopwatch new
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 Pomodoro >> defaultFinishedAction [
 	"Returns a default action to be performed when finished"
 
-	^ [
-	  self inform: 'Pomodoro finished'.
-	  Beeper beepPrimitive ]
+	^ [ self inform: 'Pomodoro finished' ]
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 Pomodoro >> defaultTotalDuration [
 	"Returns the default total duration"
 
 	^ PomodoroSettings defaultTimeInMinutes minutes
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 Pomodoro >> finish [
 
 	self isFinished ifTrue: [ ^ self ].
@@ -151,7 +151,7 @@ Pomodoro >> finish [
 	self state: #finished
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Pomodoro >> finishedAction [
 	"Returns the finished action"
 
@@ -159,14 +159,14 @@ Pomodoro >> finishedAction [
 	^finishedAction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Pomodoro >> finishedAction: aBlock [
 	"Sets a new finished action"
 
 	finishedAction := aBlock
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 Pomodoro >> initialize [
 	"Initializes the receiver"
 
@@ -175,51 +175,51 @@ Pomodoro >> initialize [
 	self reset
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Pomodoro >> isActive [
 
 	^ self stopWatch isActive
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Pomodoro >> isFinished [
 
 	^ self state = #finished
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Pomodoro >> isPaused [
 
 	^ self state = #paused
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Pomodoro >> isReady [
 
 	^ self state = #ready
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 Pomodoro >> isStarted [
 
 	^ self state = #started
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 Pomodoro >> open [
 	"Open a visual view on the receiver"
 
 	^ (PomodoroMorph on: self) openInWorld
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 Pomodoro >> pause [
 
 	self state: #paused.
 	self stopWatch suspend
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 Pomodoro >> printOn: aStream [
 
 	aStream
@@ -229,27 +229,27 @@ Pomodoro >> printOn: aStream [
 		nextPutAll: ' remaining'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Pomodoro >> remainingDuration [
 	"Returns the receivers remaining time"
 
 	^ remainingDuration
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Pomodoro >> remainingDuration: aDuration [
 	"Sets the receivers remaining duration"
 
 	remainingDuration := aDuration roundTo: 0.5 second
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Pomodoro >> remainingDurationString [
 
 	^self class formatDuration: self remainingDuration
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 Pomodoro >> reset [
 
 	self state: #ready.
@@ -257,39 +257,39 @@ Pomodoro >> reset [
 	stopWatch := nil
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 Pomodoro >> start [
 
 	self state: #started.
 	self stopWatch activate
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 Pomodoro >> state [
 
 	^state
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 Pomodoro >> state: aSymbol [
 	state := aSymbol
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Pomodoro >> stopWatch [
 
 	stopWatch ifNil: [ stopWatch := self createStopWatch ].
 	^stopWatch
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Pomodoro >> totalDuration [
 	"Returns the receivers total duration"
 
 	^totalDuration
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 Pomodoro >> totalDuration: aDuration [
 	"Sets the total duration of the receiver"
 
@@ -297,14 +297,14 @@ Pomodoro >> totalDuration: aDuration [
 	self remainingDuration: aDuration
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Pomodoro >> totalDurationInMinutes [
 	"Returns the receivers total duration in minutes"
 
 	^self totalDuration minutes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 Pomodoro >> totalDurationInMinutes: anInteger [
 	"Sets the receivers total duration in minutes"
 

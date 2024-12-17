@@ -2,8 +2,8 @@
 A morph to implement Pomodoro
 "
 Class {
-	#name : #PomodoroMorph,
-	#superclass : #BorderedMorph,
+	#name : 'PomodoroMorph',
+	#superclass : 'BorderedMorph',
 	#instVars : [
 		'pomodoro',
 		'displayClock',
@@ -16,17 +16,19 @@ Class {
 	#classInstVars : [
 		'menuIcon'
 	],
-	#category : #'Pomodoro-Core-UI'
+	#category : 'Pomodoro-Core-UI',
+	#package : 'Pomodoro-Core',
+	#tag : 'UI'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 PomodoroMorph class >> createMenuIcon [
 
 	^ Form fromBinaryStream:
 		  self menuIconContent base64Decoded readStream
 ]
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 PomodoroMorph class >> menuCommandOn: aBuilder [
 	"Add a custom menu item to the world menu"
 
@@ -38,7 +40,7 @@ PomodoroMorph class >> menuCommandOn: aBuilder [
 		action: [ self new openInWorld ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PomodoroMorph class >> menuIcon [
 	"Cache the menu item"
 
@@ -46,7 +48,7 @@ PomodoroMorph class >> menuIcon [
 	^ menuIcon
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PomodoroMorph class >> menuIconContent [
 	"
 	 'pomodoro.png' asFileReference binaryReadStreamDo: [:stream |
@@ -72,7 +74,7 @@ ret66z9rBGg2m1qtVotWKpU9jWolJsmyG4nFa/F4vBKNRmu6rtsP5/8B8kBudJ3n+60AAAAA
 SUVORK5CYII='
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 PomodoroMorph class >> on: aPomodoro [
 	"Return a new instance with the given Pomodoro as model"
 
@@ -81,12 +83,12 @@ PomodoroMorph class >> on: aPomodoro [
 		yourself
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 PomodoroMorph >> boxExtent [
 	^14 @ 14
 ]
 
-{ #category : #'private - menu' }
+{ #category : 'private - menu' }
 PomodoroMorph >> buildWindowMenu [
 	"Answer the menu to be put up in response to the user's clicking on the window-menu control in the window title."
 
@@ -99,7 +101,7 @@ PomodoroMorph >> buildWindowMenu [
 	^aMenu
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 PomodoroMorph >> changed [
 	super changed.
 	self updateClock.
@@ -107,26 +109,26 @@ PomodoroMorph >> changed [
 	self updateButtons
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PomodoroMorph >> closeBoxHit [
 
 	self stop.
 	self delete
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PomodoroMorph >> collapseBoxHit [
 	self minimize
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 PomodoroMorph >> displayClock [
 
 	displayClock ifNil: [ displayClock := self initialClockTextMorph ].
 	^ displayClock
 ]
 
-{ #category : #'private - initialization' }
+{ #category : 'private - initialization' }
 PomodoroMorph >> initButtons [
 	| stopButton |
 	startButton  := PluggableButtonMorph
@@ -153,14 +155,14 @@ PomodoroMorph >> initButtons [
  		addMorph: pauseButton fullFrame: #(0.66 1 1 1 5 -35 -5 -10) asLayoutFrame
 ]
 
-{ #category : #'private - initialization' }
+{ #category : 'private - initialization' }
 PomodoroMorph >> initClock [
 	|clock|
 	clock := self displayClock.
 	self addMorph: clock fullFrame: {0.5. 0. 0.5. 0.5. (clock extent x) negated. 5. 0. 0.} asLayoutFrame
 ]
 
-{ #category : #'private - initialization' }
+{ #category : 'private - initialization' }
 PomodoroMorph >> initCloseBox [
 
 	| closeBox ext |
@@ -169,7 +171,7 @@ PomodoroMorph >> initCloseBox [
 	self addMorph: closeBox fullFrame: {0. 0. 0. 0. 2. 2. 2 + ext x. 2 + ext y.} asLayoutFrame
 ]
 
-{ #category : #'private - initialization' }
+{ #category : 'private - initialization' }
 PomodoroMorph >> initCollapseBox [
 
 	| collapseBox ext |
@@ -178,7 +180,7 @@ PomodoroMorph >> initCollapseBox [
 	self addMorph: collapseBox fullFrame: {0. 0. 0. 0. 2 + ext x. 2. 2 + (ext x * 2). 2 + ext y.} asLayoutFrame
 ]
 
-{ #category : #'private - initialization' }
+{ #category : 'private - initialization' }
 PomodoroMorph >> initMenuBox [
 
 	| menuBox ext |
@@ -187,7 +189,7 @@ PomodoroMorph >> initMenuBox [
 	self addMorph: menuBox fullFrame: {1. 0. 1. 0. (2 + ext x) negated. 2. 0. 2 + ext y.} asLayoutFrame
 ]
 
-{ #category : #'private - initialization' }
+{ #category : 'private - initialization' }
 PomodoroMorph >> initMorph [
 	self changeProportionalLayout.
 	self stopStepping.
@@ -197,7 +199,7 @@ PomodoroMorph >> initMorph [
 		 extent: 200@105
 ]
 
-{ #category : #'private - initialization' }
+{ #category : 'private - initialization' }
 PomodoroMorph >> initProgressBar [
 	|pb top |
 	pb := self progressBar.
@@ -206,7 +208,7 @@ PomodoroMorph >> initProgressBar [
 	pb barFillStyle: PomodoroSettings progressBarColor
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 PomodoroMorph >> initialClockTextMorph [
 
 	^(TextMorph new)
@@ -216,7 +218,7 @@ PomodoroMorph >> initialClockTextMorph [
 		yourself
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PomodoroMorph >> initialize [
 	"Initializes the receiver"
 
@@ -233,39 +235,39 @@ PomodoroMorph >> initialize [
 		initButtons
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 PomodoroMorph >> isActive [
 	^ isActive
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 PomodoroMorph >> isActive: aBoolean [
 	isActive := aBoolean
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PomodoroMorph >> isCollapsed [
 	^self isMinimized
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PomodoroMorph >> isMaximized [
 
 	^ self isMinimized not
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PomodoroMorph >> isMinimized [
 	^ isMinimized
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 PomodoroMorph >> isMinimized: aBoolean [
 	isMinimized := aBoolean.
 	isMinimized ifTrue: [ self hide ]
 ]
 
-{ #category : #'private - events' }
+{ #category : 'private - events' }
 PomodoroMorph >> maximize [
 
 	self isMaximized ifTrue: [ ^ self ].
@@ -275,7 +277,7 @@ PomodoroMorph >> maximize [
 		isMinimized: false
 ]
 
-{ #category : #'private - events' }
+{ #category : 'private - events' }
 PomodoroMorph >> minimize [
 
 	self isMinimized ifTrue: [ ^ self ].
@@ -285,26 +287,26 @@ PomodoroMorph >> minimize [
 		isActive: false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PomodoroMorph >> model [
 	pomodoro isNil ifTrue: [ pomodoro := self modelClass new ].
 	^pomodoro
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PomodoroMorph >> model: aModel [
 
 	pomodoro := aModel.
 	self changed
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 PomodoroMorph >> modelClass [
 
 	^Pomodoro
 ]
 
-{ #category : #'private - menu' }
+{ #category : 'private - menu' }
 PomodoroMorph >> offerWindowMenu [
 	"Popup the window menu."
 
@@ -313,7 +315,7 @@ PomodoroMorph >> offerWindowMenu [
 	aMenu popUpEvent: self currentEvent in: self world
 ]
 
-{ #category : #'private - events' }
+{ #category : 'private - events' }
 PomodoroMorph >> onFinished [
 
 	self color: PomodoroSettings finishedColor.
@@ -322,19 +324,19 @@ PomodoroMorph >> onFinished [
 	self stopWatch suspend
 ]
 
-{ #category : #'private - events' }
+{ #category : 'private - events' }
 PomodoroMorph >> onStepping [
 
 	self model alreadyElapsed: self stopWatch duration.
 	self changed
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PomodoroMorph >> openSettings [
 	PomodoroSettings open
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PomodoroMorph >> pause [
 	self model isReady ifTrue: [ ^self ].
 	self model isPaused
@@ -347,25 +349,25 @@ PomodoroMorph >> pause [
 	self changed
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PomodoroMorph >> pauseButtonEnabled [
 	^self model isActive
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 PomodoroMorph >> progressBar [
 	progressBar ifNil: [ progressBar := ProgressBarMorph new ].
 	^progressBar
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PomodoroMorph >> reset [
 
 	self model reset.
 	self color: (self theme paneColorFor: self)
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PomodoroMorph >> restore [
 	self isMinimized ifTrue: [
 		self maximize.
@@ -373,7 +375,7 @@ PomodoroMorph >> restore [
 	ifFalse: [ self minimize ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PomodoroMorph >> setAction [
 	|action|
 	self stop.
@@ -387,7 +389,7 @@ PomodoroMorph >> setAction [
 	self changed
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PomodoroMorph >> setTime [
 	|time|
 	self stop.
@@ -400,13 +402,13 @@ PomodoroMorph >> setTime [
 	self changed
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 PomodoroMorph >> standardColor [
 
 	^(UITheme current paneColorFor: self)
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PomodoroMorph >> start [
 	super start.
  	self reset.
@@ -415,12 +417,12 @@ PomodoroMorph >> start [
 	self changed
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PomodoroMorph >> startButtonEnabled [
 	^self model isActive not
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 PomodoroMorph >> step [
 	"Do a step"
 	 
@@ -429,32 +431,32 @@ PomodoroMorph >> step [
 		ifFalse: [ self onStepping ]
 ]
 
-{ #category : #updating }
+{ #category : 'updating' }
 PomodoroMorph >> stepTime [ 
 	"Returns the morphs step time - small enough to display seconds"
 	
 	^500
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PomodoroMorph >> stop [	
 	super stop.
 	self reset.
 	self changed
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 PomodoroMorph >> stopButtonEnabled [
 	^self model isActive
 ]
 
-{ #category : #'private - accessing' }
+{ #category : 'private - accessing' }
 PomodoroMorph >> stopWatch [
 
 	^self model stopWatch
 ]
 
-{ #category : #taskbar }
+{ #category : 'taskbar' }
 PomodoroMorph >> taskbarButtonClicked [
 	"The taskbar button for the receiver has been clicked.
 	If minimised then restore.
@@ -469,12 +471,12 @@ PomodoroMorph >> taskbarButtonClicked [
 				ifFalse: [ self isActive: true ] ]
 ]
 
-{ #category : #taskbar }
+{ #category : 'taskbar' }
 PomodoroMorph >> taskbarButtonEntered: aButton event: evt in: aMorph [
 	"Expected by the taskbar. Do nothing"
 ]
 
-{ #category : #taskbar }
+{ #category : 'taskbar' }
 PomodoroMorph >> taskbarButtonFor: aTaskbar [
 	"Answer a new task bar button for the receiver.
 	 Answer nil if not required."
@@ -484,12 +486,12 @@ PomodoroMorph >> taskbarButtonFor: aTaskbar [
 		  yourself
 ]
 
-{ #category : #taskbar }
+{ #category : 'taskbar' }
 PomodoroMorph >> taskbarButtonLeft: aButton event: evt in: aMorph [
 	"Expected by the taskbar. Do nothing"
 ]
 
-{ #category : #taskbar }
+{ #category : 'taskbar' }
 PomodoroMorph >> taskbarButtonMenu: aMenuMorph [
 
 	aMenuMorph
@@ -501,19 +503,19 @@ PomodoroMorph >> taskbarButtonMenu: aMenuMorph [
 	^ aMenuMorph
 ]
 
-{ #category : #taskbar }
+{ #category : 'taskbar' }
 PomodoroMorph >> taskbarIcon [
 
 	^ self class menuIcon
 ]
 
-{ #category : #taskbar }
+{ #category : 'taskbar' }
 PomodoroMorph >> taskbarLabel [
 
 	^ Pomodoro formatDuration: pomodoro remainingDuration
 ]
 
-{ #category : #taskbar }
+{ #category : 'taskbar' }
 PomodoroMorph >> taskbarState [
 	"Answer one of #minimized, #restored, #maximized or #active."
 
@@ -528,7 +530,7 @@ PomodoroMorph >> taskbarState [
 						  ifFalse: [ #restored ] ] ]
 ]
 
-{ #category : #taskbar }
+{ #category : 'taskbar' }
 PomodoroMorph >> taskbarTask [
 	"Answer a new taskbar task for the receiver.
 	Answer nil if not required."
@@ -542,7 +544,7 @@ PomodoroMorph >> taskbarTask [
 		  label: self taskbarLabel
 ]
 
-{ #category : #'private - updating' }
+{ #category : 'private - updating' }
 PomodoroMorph >> updateButtons [
 	startButton ifNotNil: [:button |
 		button
@@ -559,7 +561,7 @@ PomodoroMorph >> updateButtons [
 					ifFalse: [ 'Pause' ])]
 ]
 
-{ #category : #'private - updating' }
+{ #category : 'private - updating' }
 PomodoroMorph >> updateClock [
 	"Update the clocks contents"
 
@@ -567,7 +569,7 @@ PomodoroMorph >> updateClock [
 	displayClock contents: self model remainingDurationString
 ]
 
-{ #category : #'private - updating' }
+{ #category : 'private - updating' }
 PomodoroMorph >> updateProgressBar [
 	self progressBar endAt: self model totalDuration asSeconds.
 	self progressBar value: self model remainingDuration asSeconds

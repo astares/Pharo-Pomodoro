@@ -2,18 +2,20 @@
 Settings for the pomodoro
 "
 Class {
-	#name : #PomodoroSettings,
-	#superclass : #Object,
+	#name : 'PomodoroSettings',
+	#superclass : 'Object',
 	#classVars : [
 		'DefaultTimeInMinutes',
 		'FinishedColor',
 		'PauseColor',
 		'ProgressBarColor'
 	],
-	#category : #'Pomodoro-Core-Settings'
+	#category : 'Pomodoro-Core-Settings',
+	#package : 'Pomodoro-Core',
+	#tag : 'Settings'
 }
 
-{ #category : #'accessing - defaults' }
+{ #category : 'accessing - defaults' }
 PomodoroSettings class >> defaultProgressBarColor [
 
 	^ SystemVersion current major > 10 
@@ -21,50 +23,50 @@ PomodoroSettings class >> defaultProgressBarColor [
 			ifFalse: [ Smalltalk ui theme class lightSelectionColor ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PomodoroSettings class >> defaultTimeInMinutes [
 
 	^ DefaultTimeInMinutes ifNil: [ DefaultTimeInMinutes := 25 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PomodoroSettings class >> defaultTimeInMinutes: anInteger [
 
 	DefaultTimeInMinutes := anInteger
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PomodoroSettings class >> finishedColor [
 
 	^ FinishedColor ifNil: [ FinishedColor := Color green ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PomodoroSettings class >> finishedColor: aColor [
 
 	FinishedColor := aColor
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 PomodoroSettings class >> open [
 	<script>
 
 	(SettingBrowser forKeywords: #('pomodorosettings')) open
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PomodoroSettings class >> pauseColor [
 
 	^ PauseColor ifNil: [ PauseColor := Color red ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PomodoroSettings class >> pauseColor: aColor [
 
 	PauseColor := aColor
 ]
 
-{ #category : #settings }
+{ #category : 'settings' }
 PomodoroSettings class >> pomodoroSettingsOn: aBuilder [
 	<systemsettings>
 	<pomodorosettings>
@@ -94,20 +96,20 @@ PomodoroSettings class >> pomodoroSettingsOn: aBuilder [
 				yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PomodoroSettings class >> progressBarColor [
 
 	^ ProgressBarColor ifNil: [
 		  ProgressBarColor := self defaultProgressBarColor ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PomodoroSettings class >> progressBarColor: anObject [
 
 	ProgressBarColor := anObject
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 PomodoroSettings class >> reset [
 	<script>
 
